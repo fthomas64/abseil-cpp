@@ -5,3 +5,4 @@ set(CMAKE_CXX_STANDARD 11)
 
 add_subdirectory(absl/base)
 add_subdirectory(absl/meta)
+add_subdirectory(absl/memory)
