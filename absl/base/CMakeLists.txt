@@ -145,6 +145,34 @@ set(endian_headers internal/endian.h internal/unaligned_access.h)
 add_library(endian ${endian_headers})
 target_link_libraries(endian config core_headers)
 
+
+###
+### throw_delegate
+###
+set(throw_delegate_sources internal/throw_delegate.cc)
+set(throw_delegate_headers internal/throw_delegate.h)
+add_library(throw_delegate ${throw_delegate_sources} ${throw_delegate_headers})
+target_link_libraries(throw_delegate base config core_headers)
+
+# cc_library(
+#     name = "throw_delegate",
+#     srcs = ["internal/throw_delegate.cc"],
+#     hdrs = ["internal/throw_delegate.h"],
+#     copts = ABSL_DEFAULT_COPTS + ABSL_EXCEPTIONS_FLAG,
+#     features = [
+#         "-use_header_modules",
+#     ],
+#     visibility = [
+#         "//absl:__subpackages__",
+#     ],
+#     deps = [
+#         ":base",
+#         ":config",
+#         ":core_headers",
+#     ],
+# )
+
+
 # cc_library(
 #     name = "endian",
 #     hdrs = [
@@ -172,23 +200,7 @@ target_link_libraries(endian config core_headers)
 #     ],
 # )
 # 
-# cc_library(
-#     name = "throw_delegate",
-#     srcs = ["internal/throw_delegate.cc"],
-#     hdrs = ["internal/throw_delegate.h"],
-#     copts = ABSL_DEFAULT_COPTS + ABSL_EXCEPTIONS_FLAG,
-#     features = [
-#         "-use_header_modules",
-#     ],
-#     visibility = [
-#         "//absl:__subpackages__",
-#     ],
-#     deps = [
-#         ":base",
-#         ":config",
-#         ":core_headers",
-#     ],
-# )
+
 # 
 # cc_test(
 #     name = "throw_delegate_test",
